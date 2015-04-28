@@ -9,6 +9,7 @@ public class ConnectDB {
 	Connection c = null;
     Statement stmt = null;
 	
+    // wywo³anie metod 
     public static void main( String args[] )
     {
     	ConnectDB db = new ConnectDB();
@@ -21,6 +22,7 @@ public class ConnectDB {
     	db.closeConnection();
     }
     
+    //deklaracja metody po³¹czenia z baz¹ danych 
     public void initConnection() {
     	try {
 			Class.forName("org.sqlite.JDBC");
@@ -33,7 +35,7 @@ public class ConnectDB {
 		}
     	
     }
-    
+    //deklaracja metody zamkniêcia po³¹czenia z  baz¹ danych
     public void closeConnection() {
     	try {
 			this.stmt.close();
@@ -43,7 +45,7 @@ public class ConnectDB {
 			e.printStackTrace();
 		}
     }
-	  
+	  // usuniêcie bazy
     public void dropTableBookstore() {
 		String sql = "DROP TABLE BOOKSTORE";
 		
@@ -54,7 +56,7 @@ public class ConnectDB {
 			e.printStackTrace();
 		}
 	}
-    
+     //stworzenie table w bazie danych
 	  public void createTableBookstore() {
 		    try {
 		      String sql = "CREATE TABLE BOOKSTORE " +
@@ -70,6 +72,7 @@ public class ConnectDB {
 		    }
 		    System.out.println("Table created successfully");
 	  }
+	  //dodanie rekordu do tabeli w bazie 
 	  public void addRecordToBookstore(int id, String nazwa, String autor, String wydawnictwo, int rokWydania){
 		   try {
 			 String sql = "INSERT INTO BOOKSTORE (ID, nazwa, autor, wydawnictwo, rokWydania)" +
