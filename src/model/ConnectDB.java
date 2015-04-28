@@ -12,8 +12,9 @@ public class ConnectDB {
 	// wywo³anie metod
 	public static void main(String args[]) {
 		ConnectDB db = new ConnectDB();
-		db.initConnection();
-
+		db.setConnection();
+		db.setStatement();
+		
 		db.dropTableBookstore();
 		db.createTableBookstore();
 		db.addRecordToBookstore(1, "Z Jav¹ przez œwiat", "Aga Jasiu",
@@ -23,18 +24,38 @@ public class ConnectDB {
 	}
 
 	// deklaracja metody po³¹czenia z baz¹ danych
-	public void initConnection() {
+	public static Connection getConnection() {
+		Connection connection = null;
+		
 		try {
 			Class.forName("org.sqlite.JDBC");
-			this.c = DriverManager.getConnection("jdbc:sqlite:test.db");
-			this.stmt = this.c.createStatement();
-			System.out.println("Opened database successfully");
+			connection = DriverManager.getConnection("jdbc:sqlite:test.db");
 		} catch (Exception e) {
-			System.err.println(e.getClass().getName() + ": " + e.getMessage());
-			System.exit(0);
+			connection = null;
 		}
-
+		
+		return connection;
 	}
+	
+	public void setConnection() {
+		try {
+			this.c = ConnectDB.getConnection();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void setStatement() {
+		try {
+			this.stmt = ConnectDB.getConnection().createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
 
 	// deklaracja metody zamkniêcia po³¹czenia z baz¹ danych
 	public void closeConnection() {
