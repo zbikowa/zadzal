@@ -6,9 +6,8 @@ public class Product {
 	
 	
 	
-	
-	public Product(String nazwa, String autor, String wydawnictwo,
-			int rokWydania) {
+	//usunęłam argumenty z Product, zeby  productModel nie wywalał błędu. 
+	public Product() {
 		this.nazwa = nazwa;
 		this.autor = autor;
 		this.wydawnictwo = wydawnictwo;

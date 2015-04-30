@@ -9,7 +9,7 @@ public class ConnectDB {
 	Connection c = null;
 	Statement stmt = null;
 
-	// wywo³anie metod
+	// wywoï¿½anie metod
 	public static void main(String args[]) {
 		ConnectDB db = new ConnectDB();
 		db.setConnection();
@@ -17,13 +17,13 @@ public class ConnectDB {
 		
 		db.dropTableBookstore();
 		db.createTableBookstore();
-		db.addRecordToBookstore(1, "Z Jav¹ przez œwiat", "Aga Jasiu",
+		db.addRecordToBookstore(1, "Z Java przez swiat", "Aga Jasiu",
 				"Nowa Era", 2001);
 
 		db.closeConnection();
 	}
 
-	// deklaracja metody po³¹czenia z baz¹ danych
+	// deklaracja metody poï¿½ï¿½czenia z bazï¿½ danych
 	public static Connection getConnection() {
 		Connection connection = null;
 		
@@ -57,7 +57,7 @@ public class ConnectDB {
 	
 	
 
-	// deklaracja metody zamkniêcia po³¹czenia z baz¹ danych
+	// deklaracja metody zamkniï¿½cia poï¿½ï¿½czenia z bazï¿½ danych
 	public void closeConnection() {
 		try {
 			this.stmt.close();
@@ -68,7 +68,7 @@ public class ConnectDB {
 		}
 	}
 
-	// usuniêcie bazy
+	// usuniï¿½cie bazy
 	public void dropTableBookstore() {
 		String sql = "DROP TABLE BOOKSTORE";
 
